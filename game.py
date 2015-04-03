@@ -3,8 +3,8 @@ from KnifeBaddie import KnifeBaddie
 from player1 import LenardLangly
 #from HUD import Text
 #from HUD import Score
-#from Button import Button
-#from BackGround import BackGround
+from Button import Button
+from BackGround import BackGround
 from Level import Level
 from Block import Block
 
@@ -24,26 +24,26 @@ screen = pygame.display.set_mode(size)
 bgImage = pygame.image.load("Recources/Maps/Screen.png").convert()
 bgRect = bgImage.get_rect()
 
-baddies = pygame.sprite.Group()
-players = pygame.sprite.Group()
+KnifeBaddies = pygame.sprite.Group()
+player1 = pygame.sprite.Group()
 hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
-Baddies.containers = (all, baddies)
-PlayerBall.containers = (all, players)
+KnifeBaddies.containers = (all, KnifeBaddies)
+LenardLangly.containers = (all, LenardLangly)
 BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
-Score.containers = (all, hudItems)
+#Score.containers = (all, hudItems)
 
 
 
 run = False
 
-startButton = Button([width/2, height-300], 
-				     "images/Buttons/Start Base.png", 
-				     "images/Buttons/Start Clicked.png")
+startButton = Button([width/2, height-200], 
+				     "Recources/Buttons/Button.png", 
+				     "Recources/Buttons/ButtonP.png")
 
 while True:
 	while not run:
