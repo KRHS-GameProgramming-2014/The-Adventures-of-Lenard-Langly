@@ -1,10 +1,10 @@
 import pygame, sys, random
-from KnifeBaddie import knifeBaddie
+from KnifeBaddie import KnifeBaddie
 from player1 import LenardLangly
 #from HUD import Text
 #from HUD import Score
-from Button import Button
-from BackGround import BackGround
+#from Button import Button
+#from BackGround import BackGround
 from Level import Level
 from Block import Block
 

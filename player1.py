@@ -1,9 +1,9 @@
 import pygame
-from KnifeBaddie import knifeBaddie
+from KnifeBaddie import KnifeBaddie
 
-class LenardLangly(kifeBaddie):
+class LenardLangly(KnifeBaddie):
     def __init__(self, pos):
-        PhaseGhost.__init__(self, "Resources/Player/Pax/Normal Pax/Playupr.png", [0,0], pos)
+        KnifeBaddie.__init__(self, "Resources/Player/Pax/Normal Pax/Playupr.png", [0,0], pos)
         self.upImages = [pygame.image.load("Resources/Player/Pax/Normal Pax/Playupr.png"),
                          pygame.image.load("Resources/Player/Pax/Normal Pax/Playupl.png"),]
         self.downImages = [pygame.image.load("Resources/Player/Pax/Normal Pax/Playdnl.png"),

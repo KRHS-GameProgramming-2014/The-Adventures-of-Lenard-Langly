@@ -2,7 +2,7 @@ import pygame, math
 
 
 
-class knifeBaddie():
+class KnifeBaddie():
     def __init__(self, image, speed = [0,0], pos = [0,0]):
         self.upImages = [pygame.image.load("Resources/Enemys/Phase/Phase ghostUp1.png"),
                          pygame.image.load("Resources/Objects/Ghosts/Phase/Phase ghostUp2.png"),]
