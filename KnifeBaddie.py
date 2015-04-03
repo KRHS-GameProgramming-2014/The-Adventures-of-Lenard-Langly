@@ -4,14 +4,8 @@ import pygame, math
 
 class KnifeBaddie():
     def __init__(self, image, speed = [0,0], pos = [0,0]):
-        self.upImages = [pygame.image.load("Resources/Enemys/Phase/Phase ghostUp1.png"),
-                         pygame.image.load("Resources/Objects/Ghosts/Phase/Phase ghostUp2.png"),]
-        self.downImages = [pygame.image.load("Resources/Objects/Ghosts/Phase/Phase ghostDN1.png"),
-                           pygame.image.load("Resources/Objects/Ghosts/Phase/Phase ghostDN2.png"),]
-        self.leftImages = [pygame.image.load("Resources/Objects/Ghosts/Phase/Phase ghostLFT1.png"),
-                           pygame.image.load("Resources/Objects/Ghosts/Phase/Phase ghostLFT2.png"),]
-        self.rightImages = [pygame.image.load("Resources/Objects/Ghosts/Phase/Phase ghostRGT1.png"),
-                            pygame.image.load("Resources/Objects/Ghosts/Phase/Phase ghostRGT2.png")]
+        self.upImages = [pygame.image.load("Resources/Enemys/Knife Baddie/Paratrooper 1.png"),
+                         pygame.image.load("Resources/Enemys/Knife Baddie/Paratrooper 2.png"),]
         self.facing = "up"
         self.changed = False
         self.images = self.upImages
