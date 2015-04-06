@@ -65,9 +65,9 @@ while True:
 		pygame.display.flip()
 		clock.tick(60)
 		
-	BackGround("images/Screens/Main Screen.png")
+	BackGround("Recources/Maps/Screen.png")
 	
-	player = PlayerBall([width/2, height/2])
+	player = LenardLangly([width/2, height/2])
 	
 	
 	level = Level(size, 50)
