@@ -3,16 +3,19 @@ from KnifeBaddie import KnifeBaddie
 
 class LenardLangly(KnifeBaddie):
     def __init__(self, pos):
-        KnifeBaddie.__init__(self, "Resources/Player/Pax/Normal Pax/Playupr.png", [0,0], pos)
-        self.upImages = [pygame.image.load("Resources/Player/Pax/Normal Pax/Playupr.png"),
-                         pygame.image.load("Resources/Player/Pax/Normal Pax/Playupl.png"),]
-        self.downImages = [pygame.image.load("Resources/Player/Pax/Normal Pax/Playdnl.png"),
-                           pygame.image.load("Resources/Player/Pax/Normal Pax/Playdnr.png"),]
-        self.leftImages = [pygame.image.load("Resources/Player/Pax/Normal Pax/Playltl.png"),
-                           pygame.image.load("Resources/Player/Pax/Normal Pax/Playltr.png"),]
-        self.rightImages = [pygame.image.load("Resources/Player/Pax/Normal Pax/Playrtr.png"),
-                            pygame.image.load("Resources/Player/Pax/Normal Pax/Playrtl.png")]
-        
+        KnifeBaddie.__init__(self, "images/Player/pballbu.png", [0,0], pos)
+        self.upImages = [pygame.image.load("images/Player/pballru.png"),
+                         pygame.image.load("images/Player/pballgu.png"),
+                         pygame.image.load("images/Player/pballbu.png")]
+        self.downImages = [pygame.image.load("images/Player/pballrd.png"),
+                           pygame.image.load("images/Player/pballgd.png"),
+                           pygame.image.load("images/Player/pballbd.png")]
+        self.leftImages = [pygame.image.load("images/Player/pballrl.png"),
+                           pygame.image.load("images/Player/pballgl.png"),
+                           pygame.image.load("images/Player/pballbl.png")]
+        self.rightImages = [pygame.image.load("images/Player/pballrr.png"),
+                            pygame.image.load("images/Player/pballgr.png"),
+                            pygame.image.load("images/Player/pballbr.png")]
         self.facing = "up"
         self.changed = False
         self.images = self.upImages
@@ -22,79 +25,32 @@ class LenardLangly(KnifeBaddie):
         self.maxWait = 60*.25
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect(center = self.rect.center)
-        self.maxSpeed = 3
-        self.living = True
-                
-    def update(self, width, height):
-        PhaseGhost.update(self, width, height)
+        self.maxSpeed = 10
+            
+    def update(*args):
+        self = args[0]
+        width = args[1]
+        height = args[2]
+        KnifeBaddie.update(self, width, height)
         self.animate()
         self.changed = False
         
-    
-    def collideEdge(self, width, height):
+    def collideWall(self, width, height):
         if not self.didBounceX:
             #print "trying to hit Wall"
             if self.rect.left < 0 or self.rect.right > width:
-                self.speedx *= -3
+                self.speedx = 0
                 self.didBounceX = True
                 #print "hit xWall"
         if not self.didBounceY:
             if self.rect.top < 0 or self.rect.bottom > height:
-                self.speedy *= -3
+                self.speedy = 0
                 self.didBounceY = True
                 #print "hit xWall"
     
-    def collideSpeed(self, wall):
-        if self.rect.right > wall.rect.left and self.rect.left < wall.rect.right:
-            if self.rect.bottom > wall.rect.top and self.rect.top < wall.rect.bottom:
-                if not self.didBounceX and self.speedx != 0:
-                    self.speedx = -self.speedx*1.01
-                    self.move()
-                    self.speedx *= -1.1
-                    print "x"
-                    self.didBouncex = True
-                if not self.didBounceY and self.speedy != 0:
-                    self.speedy = -self.speedy*1.01
-                    self.move()
-                    self.speedy *= -1.1
-                    print "y"
-                    self.didBounceY = True
-                    print "hit Ball"
-    
-    def collideWall(self, wall):
-        if self.rect.right > wall.rect.left and self.rect.left < wall.rect.right:
-            if self.rect.bottom > wall.rect.top and self.rect.top < wall.rect.bottom:
-                if not self.didBounceX and self.speedx != 0:
-                    self.speedx = -self.speedx*-1.01
-                    self.move()
-                    self.speedx *= -1
-                    print "x"
-                    self.didBouncex = True
-                if not self.didBounceY and self.speedy != 0:
-                    self.speedy = -self.speedy*-1.01
-                    self.move()
-                    self.speedy *= -1
-                    print "y"
-                    self.didBounceY = True
-                    print "hit Ball"
-    
-    def collideGhost(self, other):
-        if self != other:
-            
-            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
-                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
-                    if (self.radius + other.radius) > self.distance(other.rect.center):
-                        if not self.didBounceX:
-                            self.speedx = -self.speedx
-                            self.didBouncex = True
-                        if not self.didBounceY:
-                            self.speedy = -self.speedy
-                            self.didBounceY = True
-                        self.living = False
-    
     def animate(self):
         if self.waitCount < self.maxWait:
-            self.waitCount += .45
+            self.waitCount += 1
         else:
             self.waitCount = 0
             self.changed = True
@@ -114,8 +70,6 @@ class LenardLangly(KnifeBaddie):
                 self.images = self.leftImages
             
             self.image = self.images[self.frame]
-            
-    
     
     def go(self, direction):
         if direction == "up":
