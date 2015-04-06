@@ -3,7 +3,7 @@ from KnifeBaddie import KnifeBaddie
 from player1 import LenardLangly
 #from HUD import Text
 #from HUD import Score
-from Button import Button
+#from Button import Button
 #from BackGround import BackGround
 from Level import Level
 from Block import Block
@@ -21,17 +21,17 @@ bgColor = r,g,b = 0, 0, 10
 
 screen = pygame.display.set_mode(size)
 
-bgImage = pygame.image.load("images/Screens/Start Screen.png").convert()
+bgImage = pygame.image.load("Recources/Maps/Screen.png").convert()
 bgRect = bgImage.get_rect()
 
-balls = pygame.sprite.Group()
+baddies = pygame.sprite.Group()
 players = pygame.sprite.Group()
 hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
-Ball.containers = (all, balls)
+Baddies.containers = (all, baddies)
 PlayerBall.containers = (all, players)
 BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
