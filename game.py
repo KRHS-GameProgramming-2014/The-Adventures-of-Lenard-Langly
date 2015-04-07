@@ -41,7 +41,8 @@ run = False
 
 startButton = Button([width/2, height-200], 
                      "Recources/Buttons/Button.png", 
-                     "Recources/Buttons/Buttonp.png")
+                     "Recources/Buttons/ButtonP.png")
+
 
 while True:
     while not run:
