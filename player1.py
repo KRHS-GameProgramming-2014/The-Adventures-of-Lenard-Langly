@@ -3,14 +3,14 @@ from KnifeBaddie import KnifeBaddie
 
 class LenardLangly(KnifeBaddie):
     def __init__(self, pos):
-        KnifeBaddie.__init__(self, "Recources/Enemys/Knife Baddie/paratrooper 1.png", [0,0], pos)
-        self.upImages = [pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 2.png"),
+        KnifeBaddie.__init__(self, "Recources/player 1/LenardUP1.png", [0,0], pos)
+        self.upImages = [pygame.image.load("Recources/player 1/LenardUP1.png"),
                          pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
-        self.downImages = [pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 2.png"),
+        self.downImages = [pygame.image.load("Recources/player 1/LenardDN1.png"),
                            pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
-        self.leftImages = [pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 2.png"),
+        self.leftImages = [pygame.image.load("Recources/player 1/LenardLT1.png"),
                            pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
-        self.rightImages = [pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 2.png"),
+        self.rightImages = [pygame.image.load("Recources/player 1/LenardRT1.png"),
                             pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
         self.facing = "up"
         self.changed = False
