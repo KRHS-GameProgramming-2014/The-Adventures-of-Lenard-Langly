@@ -7,7 +7,7 @@ from Button import Button
 from BackGround import BackGround
 from Level import Level
 from Block import Block
-
+#Go ahead keep yelling, its totally working
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -37,16 +37,15 @@ BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Score.containers = (all, hudItems)
 
-
+#You got a problem, you can tell me in A NORMAL VOICE
 
 run = False
 
 startButton = Button([width/2, height-200], 
                      "Recources/Buttons/Button.png", 
-                     "Recources/Buttons/Button.png")
+                     "Recources/Buttons/Buttonp.png")
 
 while True:
-<<<<<<< HEAD
     while not run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
@@ -131,7 +130,7 @@ while True:
         pygame.display.update(dirty)
         pygame.display.flip()
         clock.tick(60)
-=======
+
 	while not run:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT: sys.exit()
@@ -187,7 +186,7 @@ while True:
 					player.go("stop left")
 			
 		if len(KnifeBaddie) < 10:
-			if random.randint(0, 1*60) == 0:
+			if random.randint(0, 1 * 60) == 0:
 				KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
 						  [random.randint(0,10), random.randint(0,10)],
 						  [random.randint(100, width-100), random.randint(100, height-100)])
@@ -216,5 +215,5 @@ while True:
 		pygame.display.update(dirty)
 		pygame.display.flip()
 		clock.tick(60)
->>>>>>> origin/master
 
+#I could care less about what you think of me
