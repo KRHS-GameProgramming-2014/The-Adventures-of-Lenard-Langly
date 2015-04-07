@@ -43,7 +43,11 @@ run = False
 
 startButton = Button([width/2, height-200], 
                      "Recources/Buttons/Button.png", 
+<<<<<<< HEAD
                      "Recources/Buttons/Buttonp.png")
+=======
+                     "Recources/Buttons/ButtonP.png")
+>>>>>>> origin/master
 
 while True:
     while not run:
@@ -158,11 +162,11 @@ while True:
 	level = Level(size, 50)
 	level.loadLevel("1")
 
-	#timer = Score([80, height - 25], "Time: ", 36)
-	#timerWait = 0
-	#timerWaitMax = 6
+	timer = Score([80, height - 25], "Time: ", 36)
+	timerWait = 0
+	timerWaitMax = 6
 
-	#score = Score([width-80, height-25], "Score: ", 36)
+	score = Score([width-80, height-25], "Score: ", 36)
 	while run:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT: sys.exit()
@@ -185,24 +189,29 @@ while True:
 				if event.key == pygame.K_a or event.key == pygame.K_LEFT:
 					player.go("stop left")
 			
+<<<<<<< HEAD
 		if len(KnifeBaddie) < 10:
 			if random.randint(0, 1 * 60) == 0:
+=======
+		if len(knifeBaddies) < 10:
+			if random.randint(0, 1*60) == 0:
+>>>>>>> origin/master
 				KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
 						  [random.randint(0,10), random.randint(0,10)],
 						  [random.randint(100, width-100), random.randint(100, height-100)])
 						  
 						  
-		#if timerWait < timerWaitMax:
-		#	timerWait += 1
-		#else:
-		#	timerWait = 0
-		#	timer.increaseScore(.1)
+		if timerWait < timerWaitMax:
+			timerWait += 1
+		else:
+			timerWait = 0
+			timer.increaseScore(.1)
 		
 		playersHitknifeBaddies = pygame.sprite.groupcollide(players, knifeBaddies, False, True)
 		knifeBaddiesHitknifeBaddies = pygame.sprite.groupcollide(knifeBaddies, knifeBaddies, False, False)
 		
 		for player in playersHitknifeBaddies:
-			for knifeBaddie in playersHitknifeBaddiess[player]:
+			for knifeBaddie in playersHitknifeBaddies[player]:
 				score.increaseScore(1)
 				
 		for bully in knifeBaddiesHitknifeBaddies:
