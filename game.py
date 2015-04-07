@@ -100,7 +100,7 @@ while True:
 				if event.key == pygame.K_a or event.key == pygame.K_LEFT:
 					player.go("stop left")
 			
-		if len(knifeBaddie) < 10:
+		if len(KnifeBaddie) < 10:
 			if random.randint(0, 1*60) == 0:
 				KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
 						  [random.randint(0,10), random.randint(0,10)],
