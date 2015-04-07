@@ -24,15 +24,15 @@ screen = pygame.display.set_mode(size)
 bgImage = pygame.image.load("Recources/Maps/Screen.png").convert()
 bgRect = bgImage.get_rect()
 
-KnifeBaddies = pygame.sprite.Group()
-player1 = pygame.sprite.Group()
+knifeBaddies = pygame.sprite.Group()
+players = pygame.sprite.Group()
 hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
-KnifeBaddies.containers = (all, KnifeBaddies)
-LenardLangly.containers = (all, LenardLangly)
+KnifeBaddie.containers = (all, knifeBaddies)
+LenardLangly.containers = (all, players)
 BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 #Score.containers = (all, hudItems)
@@ -65,7 +65,7 @@ while True:
 		pygame.display.flip()
 		clock.tick(60)
 		
-	BackGround("Recources/Maps/Screen.png")
+	BackGround("Recources/Maps/Background.png")
 	
 	player = LenardLangly([width/2, height/2])
 	
@@ -73,11 +73,11 @@ while True:
 	level = Level(size, 50)
 	level.loadLevel("1")
 
-	timer = Score([80, height - 25], "Time: ", 36)
-	timerWait = 0
-	timerWaitMax = 6
+	#timer = Score([80, height - 25], "Time: ", 36)
+	#timerWait = 0
+	#timerWaitMax = 6
 
-	score = Score([width-80, height-25], "Score: ", 36)
+	#score = Score([width-80, height-25], "Score: ", 36)
 	while run:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT: sys.exit()
@@ -100,28 +100,28 @@ while True:
 				if event.key == pygame.K_a or event.key == pygame.K_LEFT:
 					player.go("stop left")
 			
-		if len(balls) < 10:
+		if len(knifeBaddie) < 10:
 			if random.randint(0, 1*60) == 0:
-				Ball("images/Ball/ball.png",
+				KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
 						  [random.randint(0,10), random.randint(0,10)],
 						  [random.randint(100, width-100), random.randint(100, height-100)])
 						  
 						  
-		if timerWait < timerWaitMax:
-			timerWait += 1
-		else:
-			timerWait = 0
-			timer.increaseScore(.1)
+		#if timerWait < timerWaitMax:
+		#	timerWait += 1
+		#else:
+		#	timerWait = 0
+		#	timer.increaseScore(.1)
 		
-		playersHitBalls = pygame.sprite.groupcollide(players, balls, False, True)
-		ballsHitBalls = pygame.sprite.groupcollide(balls, balls, False, False)
+		playersHitknifeBaddies = pygame.sprite.groupcollide(players, knifeBaddies, False, True)
+		knifeBaddiesHitknifeBaddies = pygame.sprite.groupcollide(knifeBaddies, knifeBaddies, False, False)
 		
-		for player in playersHitBalls:
-			for ball in playersHitBalls[player]:
+		for player in playersHitknifeBaddies:
+			for knifeBaddie in playersHitknifeBaddiess[player]:
 				score.increaseScore(1)
 				
-		for bully in ballsHitBalls:
-			for victem in ballsHitBalls[bully]:
+		for bully in knifeBaddiesHitknifeBaddies:
+			for victem in knifeBaddiesHitknifeBaddies[bully]:
 				bully.collideBall(victem)
 		
 		all.update(width, height)

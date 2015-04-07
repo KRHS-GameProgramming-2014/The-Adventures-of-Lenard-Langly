@@ -3,19 +3,15 @@ from KnifeBaddie import KnifeBaddie
 
 class LenardLangly(KnifeBaddie):
     def __init__(self, pos):
-        KnifeBaddie.__init__(self, "images/Player/pballbu.png", [0,0], pos)
-        self.upImages = [pygame.image.load("images/Player/pballru.png"),
-                         pygame.image.load("images/Player/pballgu.png"),
-                         pygame.image.load("images/Player/pballbu.png")]
-        self.downImages = [pygame.image.load("images/Player/pballrd.png"),
-                           pygame.image.load("images/Player/pballgd.png"),
-                           pygame.image.load("images/Player/pballbd.png")]
-        self.leftImages = [pygame.image.load("images/Player/pballrl.png"),
-                           pygame.image.load("images/Player/pballgl.png"),
-                           pygame.image.load("images/Player/pballbl.png")]
-        self.rightImages = [pygame.image.load("images/Player/pballrr.png"),
-                            pygame.image.load("images/Player/pballgr.png"),
-                            pygame.image.load("images/Player/pballbr.png")]
+        KnifeBaddie.__init__(self, "Recources/Enemys/Knife Baddie/paratrooper 1.png", [0,0], pos)
+        self.upImages = [pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 2.png"),
+                         pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
+        self.downImages = [pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 2.png"),
+                           pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
+        self.leftImages = [pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 2.png"),
+                           pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
+        self.rightImages = [pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 2.png"),
+                            pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
         self.facing = "up"
         self.changed = False
         self.images = self.upImages

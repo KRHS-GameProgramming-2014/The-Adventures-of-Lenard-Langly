@@ -11,7 +11,7 @@ class Level():
 		
 	def loadLevel(self, level):
 		self.level = level
-		levelFile = "maps/" + level + ".lvl"
+		levelFile = "Recources/Maps/" + level + ".lvl"
 		
 		f = open(levelFile, "r")
 		lines = f.readlines()
@@ -31,7 +31,7 @@ class Level():
 		for y, line in enumerate(lines):
 			for x, c in enumerate(line):
 				if c == "#":
-					Block("images/Block.png", [x*self.blockSize,y*self.blockSize])
+					Block("Recources/Maps/Block.png", [x*self.blockSize,y*self.blockSize])
 			
 
 
