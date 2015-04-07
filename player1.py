@@ -1,6 +1,6 @@
 import pygame
 from KnifeBaddie import KnifeBaddie
-#Bite me
+
 class LenardLangly(KnifeBaddie):
     def __init__(self, pos):
         KnifeBaddie.__init__(self, "Recources/player 1/LenardUP1.png", [0,0], pos)
