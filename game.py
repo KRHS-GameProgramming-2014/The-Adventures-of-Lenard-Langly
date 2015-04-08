@@ -134,7 +134,6 @@ while True:
         pygame.display.update(dirty)
         pygame.display.flip()
         clock.tick(60)
-<<<<<<< HEAD
 
 	while not run:
 		for event in pygame.event.get():
@@ -191,15 +190,15 @@ while True:
 					player.go("stop left")
 			
 
-			if len(KnifeBaddie) < MaxKnifeBaddie:
+			if len(KnifeBaddie) < (MaxKnifeBaddie):
 				if random.randint(0, 1 * 60) == 0:
 					KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
 						[random.randint(0,10), random.randint(0,10)],
 						[random.randint(100, width-100), random.randint(100, height-100)])
 
-			if len(knifeBaddies) < MaxKnifeBaddie:
+			if len(knifeBaddies) < (MaxKnifeBaddie):
 				if random.randint(0, 1*60) == 0:
-					KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
+					knifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
 						[random.randint(0,10), random.randint(0,10)],
 						[random.randint(100, width-100), random.randint(100, height-100)])
 						  
@@ -230,5 +229,3 @@ while True:
 
 #I could care less about what you think of me
 
-=======
->>>>>>> origin/master
