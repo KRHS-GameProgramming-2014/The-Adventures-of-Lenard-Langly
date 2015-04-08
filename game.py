@@ -134,6 +134,7 @@ while True:
         pygame.display.update(dirty)
         pygame.display.flip()
         clock.tick(60)
+<<<<<<< HEAD
 
 	while not run:
 		for event in pygame.event.get():
@@ -229,3 +230,5 @@ while True:
 
 #I could care less about what you think of me
 
+=======
+>>>>>>> origin/master
