@@ -47,12 +47,13 @@ class KnifeBaddie(pygame.sprite.Sprite):
     
     def collideBlock(self, other):
         if self != other:
-            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
-                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
-                    if (self.radius + other.rect) > self.distance(other.rect.center):
-                        self.living = False
-                        return True
-        return False
+            if (self.rect and other.rect) > self.distance(other.rect.center):
+                if not self.didBounceX:
+                    self.speedx = -self.speedx
+                    self.didBouncex = True
+                if not self.didBounceY:
+                    self.speedy = -self.speedy
+                    self.didBounceY = True
         
     def collideBall(self, other):
         if self != other:
