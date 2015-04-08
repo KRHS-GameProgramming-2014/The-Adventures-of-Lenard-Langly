@@ -11,7 +11,7 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-width = 800 
+width = 900 
 height = 600
 size = width, height
 
@@ -115,6 +115,7 @@ while True:
         playersHitknifeBaddies = pygame.sprite.groupcollide(players, knifeBaddies, False, True)
         knifeBaddiesHitknifeBaddies = pygame.sprite.groupcollide(knifeBaddies, knifeBaddies, False, False)
         knifeBaddiesHitblocks = pygame.sprite.groupcollide(knifeBaddies, blocks, False, False)
+        playersHitblocks = pygame.sprite.groupcollide(players, blocks, False, False)
         
         for player in playersHitknifeBaddies:
             for knifeBaddie in playersHitknifeBaddies[player]:
@@ -126,6 +127,10 @@ while True:
                 
         for bully in knifeBaddiesHitblocks:
             for victem in knifeBaddiesHitblocks[bully]:
+                bully.collideBlock(victem)
+                
+        for bully in playersHitblocks:
+            for victem in playersHitblocks[bully]:
                 bully.collideBlock(victem)
         
         all.update(width, height)
