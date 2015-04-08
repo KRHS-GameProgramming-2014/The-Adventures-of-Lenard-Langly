@@ -21,7 +21,7 @@ class LenardLangly(KnifeBaddie):
         self.maxWait = 60*.25
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect(center = self.rect.center)
-        self.maxSpeed = 10
+        self.maxSpeed = 5
             
     def update(*args):
         self = args[0]
@@ -30,6 +30,16 @@ class LenardLangly(KnifeBaddie):
         KnifeBaddie.update(self, width, height)
         self.animate()
         self.changed = False
+    
+    def collideBlock(self, other):
+        if self != other:
+            if (self.rect and other.rect) > self.distance(other.rect.center):
+                if not self.didBounceX:
+                    self.speedx = -self.speedx
+                    self.didBouncex = True
+                if not self.didBounceY:
+                    self.speedy = -self.speedy
+                    self.didBounceY = True
         
     def collideWall(self, width, height):
         if not self.didBounceX:
