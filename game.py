@@ -7,6 +7,7 @@ from Button import Button
 from BackGround import BackGround
 from Level import Level
 from Block import Block
+from Bullet import bullet
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -89,6 +90,8 @@ while True:
                     player.go("down")
                 if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("left")
+                if event.key == pygame.K_SPACE:
+					projectiles += player.attack("bullet")
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
                     player.go("stop up")
