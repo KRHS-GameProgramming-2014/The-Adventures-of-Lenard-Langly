@@ -36,7 +36,7 @@ class LenardLangly(KnifeBaddie):
             if (self.rect and other.rect) > self.distance(other.rect.center):
                 if not self.didBounceX:
                     self.speedx = -self.speedx
-                    self.didBouncex = True
+                    self.didBounceX = True
                 if not self.didBounceY:
                     self.speedy = -self.speedy
                     self.didBounceY = True

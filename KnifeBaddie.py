@@ -1,6 +1,5 @@
 import pygame, math
 
-#You didn't write any of this
 
 class KnifeBaddie(pygame.sprite.Sprite):
     def __init__(self, image, speed = [0,0], pos = [0,0]):
@@ -50,7 +49,7 @@ class KnifeBaddie(pygame.sprite.Sprite):
             if (self.rect and other.rect) > self.distance(other.rect.center):
                 if not self.didBounceX:
                     self.speedx = -self.speedx
-                    self.didBouncex = True
+                    self.didBounceX = True
                 if not self.didBounceY:
                     self.speedy = -self.speedy
                     self.didBounceY = True
