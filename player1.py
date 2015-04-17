@@ -3,7 +3,7 @@ from KnifeBaddie import KnifeBaddie
 from Bullet import Bullet
 
 class LenardLangly(KnifeBaddie):
-    def __init__(self, pos):
+    def __init__(self, pos, attack):
         KnifeBaddie.__init__(self, "Recources/player 1/LenardUP1.png", [0,0], pos)
         self.upImages = [pygame.image.load("Recources/player 1/LenardUP1.png"),
                          pygame.image.load("Recources/player 1/LenardUP2.png")]
@@ -113,5 +113,5 @@ class LenardLangly(KnifeBaddie):
         if atk == "Bullet" and self.bulletCoolDown == 0:
             self.shooting = True
             self.bulletCoolDown = self.bulletCoolDownMax
-            return [bullet(self)]
+            return [Bullet(self)]
         return []
