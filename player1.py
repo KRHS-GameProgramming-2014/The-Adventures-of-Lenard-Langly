@@ -1,5 +1,6 @@
 import pygame
 from KnifeBaddie import KnifeBaddie
+from Bullet import Bullet
 
 class LenardLangly(KnifeBaddie):
     def __init__(self, pos):
@@ -22,6 +23,9 @@ class LenardLangly(KnifeBaddie):
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect(center = self.rect.center)
         self.maxSpeed = 5
+        self.bulletCoolDown = 0
+        self.bulletCoolDownMax = 0
+        self.bulletCoolDown = 0
             
     def update(*args):
         self = args[0]
@@ -103,3 +107,11 @@ class LenardLangly(KnifeBaddie):
             self.speedx = -self.maxSpeed
         elif direction == "stop left":
             self.speedx = 0
+    
+    
+    def attack(self, atk):
+        if atk == "Bullet" and self.bulletCoolDown == 0:
+            self.shooting = True
+            self.bulletCoolDown = self.bulletCoolDownMax
+            return [Bullet(self)]
+        return []
