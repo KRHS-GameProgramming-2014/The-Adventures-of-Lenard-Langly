@@ -73,7 +73,7 @@ while True:
         
     BackGround("Recources/Maps/Background V2.png")
     
-    player = LenardLangly([width/2, height/2, speed/2])
+    player = LenardLangly([width/2, height/2, )
     
     
     level = Level(size, 50)
