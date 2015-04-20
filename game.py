@@ -78,12 +78,8 @@ while True:
     
 
     player = LenardLangly([width/2, height/2])
-<<<<<<< HEAD
-=======
 
     player2 = LenardLangly([width/2, height/2])
-
->>>>>>> origin/master
     
     
     level = Level(size, 50)
