@@ -108,13 +108,12 @@ while True:
                     player.go("down")
                 elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("left")
-<<<<<<< HEAD
                 if event.key == pygame.K_SPACE:
                     player.attack("Bullet")
-=======
+
                 elif event.key == pygame.K_SPACE:
                     projectiles += player.attack("Bullet")
->>>>>>> origin/master
+
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
                     player.go("stop up")
