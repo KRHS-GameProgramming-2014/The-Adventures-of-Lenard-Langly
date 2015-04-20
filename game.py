@@ -1,5 +1,6 @@
 import pygame, sys, random
 from KnifeBaddie import KnifeBaddie
+from GunBaddie import GunBaddie
 from player1 import LenardLangly
 from HUD import Text
 from HUD import Score
@@ -24,6 +25,7 @@ screen = pygame.display.set_mode(size)
 bgImage = pygame.image.load("Recources/Maps/Screen.png").convert()
 bgRect = bgImage.get_rect()
 
+gunBaddies = pygame.sprite.Group()
 bullets = pygame.sprite.Group()
 knifeBaddies = pygame.sprite.Group()
 players = pygame.sprite.Group()
@@ -32,6 +34,7 @@ backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
+GunBaddie.containers = (all, gunBaddies)
 Bullet.containers = (all, bullets)
 KnifeBaddie.containers = (all, knifeBaddies)
 LenardLangly.containers = (all, players)
@@ -73,7 +76,11 @@ while True:
         
     BackGround("Recources/Maps/Background V2.png")
     
+<<<<<<< HEAD
     player = LenardLangly([width/2, height/2, )
+=======
+    player = LenardLangly([width/2, height/2])
+>>>>>>> origin/master
     
     
     level = Level(size, 50)
@@ -116,33 +123,64 @@ while True:
                 KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
                           [random.randint(0,3), random.randint(0,3)],
                           spts[random.randint(0,len(spts)-1)])
+        if len(gunBaddies) < 5:
+            if random.randint(0, 1*20) == 0:
+                GunBaddie("Recources/Enemys/Gunman Baddie/Gunman Baddie 1.png",
+                          [random.randint(0,3), random.randint(0,3)],
+                          spts[random.randint(0,len(spts)-1)])                  
                           
-                          
+       
         if timerWait < timerWaitMax:
            timerWait += 1
         else:
            timerWait = 0
            timer.increaseScore(.1)
         
-        playersHitknifeBaddies = pygame.sprite.groupcollide(players, knifeBaddies, False, True)
+        playersHitknifeBaddies = pygame.sprite.groupcollide(players, knifeBaddies, True, False)
+        playersHitgunBaddies = pygame.sprite.groupcollide(players, gunBaddies, False, True)
         knifeBaddiesHitknifeBaddies = pygame.sprite.groupcollide(knifeBaddies, knifeBaddies, False, False)
+        gunBaddiesHitgunBaddies = pygame.sprite.groupcollide(gunBaddies, gunBaddies, False, False)
         knifeBaddiesHitblocks = pygame.sprite.groupcollide(knifeBaddies, blocks, False, False)
+        gunBaddiesHitblocks = pygame.sprite.groupcollide(gunBaddies, blocks, False, False)
         playersHitblocks = pygame.sprite.groupcollide(players, blocks, False, False)
+        bulletsHitknifeBaddies = pygame.sprite.groupcollide(bullets, knifeBaddies, False, True)
+        bulletsHitgunBaddies = pygame.sprite.groupcollide(bullets, gunBaddies, True, False)
+       
         for player in playersHitknifeBaddies:
             for knifeBaddie in playersHitknifeBaddies[player]:
+                score.increaseScore(1)
+        
+        for player in playersHitgunBaddies:
+            for gunBaddie in playersHitgunBaddies[player]:
                 score.increaseScore(1)
                 
         for bully in knifeBaddiesHitknifeBaddies:
             for victem in knifeBaddiesHitknifeBaddies[bully]:
                 bully.collideBall(victem)
+        
+        for bully in gunBaddiesHitgunBaddies:
+            for victem in gunBaddiesHitgunBaddies[bully]:
+                bully.collideBall(victem) 
                 
         for bully in knifeBaddiesHitblocks:
             for victem in knifeBaddiesHitblocks[bully]:
+                bully.collideBlock(victem)
+        
+        for bully in gunBaddiesHitblocks:
+            for victem in gunBaddiesHitblocks[bully]:
                 bully.collideBlock(victem)
                 
         for bully in playersHitblocks:
             for victem in playersHitblocks[bully]:
                 bully.collideBlock(victem)
+                
+        for bully in bulletsHitknifeBaddies:
+            for victem in bulletsHitknifeBaddies[bully]:
+                bully.collideBall(victem)
+                
+        for bully in bulletsHitgunBaddies:
+            for victem in bulletsHitgunBaddies[bully]:
+                bully.collideBall(victem)
         
         all.update(width, height)
         
