@@ -1,13 +1,13 @@
 import math,sys,pygame
 
 class Bullet(pygame.sprite.Sprite):
-    def __init__(self, pos, angle):
+    def __init__(self, pos):
         pygame.sprite.Sprite.__init__(self, self.containers)
-        self.baseImage = pygame.image.load("Recources/Projectiles/Bullet.png")
-        self.rect = self.baseImage.get_rect()
+        self.image = pygame.image.load("Recources/Projectiles/Bullet.png")
+        self.rect = self.image.get_rect()
+        self.speedx = 1
+        self.speedy = 0
         self.living = True
-        self.speedx = math.cos(math.radians(self.angle))*10
-        self.speedy = -math.sin(math.radians(self.angle))*10
         self.speed = [self.speedx, self.speedy] 
        
         

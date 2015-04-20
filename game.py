@@ -76,11 +76,11 @@ while True:
         
     BackGround("Recources/Maps/Background V2.png")
     
-<<<<<<< HEAD
-    player = LenardLangly([width/2, height/2, )
-=======
+
     player = LenardLangly([width/2, height/2])
->>>>>>> origin/master
+
+    player2 = LenardLangly([width/2, height/2])
+
     
     
     level = Level(size, 50)
@@ -100,24 +100,23 @@ while True:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
                     player.go("up")
-                if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
+                elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
                     player.go("right")
-                if event.key == pygame.K_s or event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
                     player.go("down")
-                if event.key == pygame.K_a or event.key == pygame.K_LEFT:
+                elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("left")
-                if event.key == pygame.K_SPACE:
+                elif event.key == pygame.K_SPACE:
                     projectiles += player.attack("Bullet")
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
                     player.go("stop up")
-                if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
+                elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
                     player.go("stop right")
-                if event.key == pygame.K_s or event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
                     player.go("stop down")
-                if event.key == pygame.K_a or event.key == pygame.K_LEFT:
+                elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("stop left")
-            
         if len(knifeBaddies) < 5:
             if random.randint(0, 1*20) == 0:
                 KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
@@ -181,6 +180,8 @@ while True:
         for bully in bulletsHitgunBaddies:
             for victem in bulletsHitgunBaddies[bully]:
                 bully.collideBall(victem)
+        for projectile in projectiles:
+            screen.blit(projectile.image, projectile.rect)
         
         all.update(width, height)
         
