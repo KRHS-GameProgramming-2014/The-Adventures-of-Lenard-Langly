@@ -76,11 +76,8 @@ while True:
         
     BackGround("Recources/Maps/Background V2.png")
     
-<<<<<<< HEAD
-    player = LenardLangly([width/2, height/2, )
-=======
+
     player = LenardLangly([width/2, height/2])
->>>>>>> origin/master
     
     
     level = Level(size, 50)
@@ -90,7 +87,6 @@ while True:
     timerWait = 0
     timerWaitMax = 6
 
-    projectiles = []
 
 
     score = Score([width-80, height-25], "Score: ", 36)
@@ -107,7 +103,7 @@ while True:
                 if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("left")
                 if event.key == pygame.K_SPACE:
-                    projectiles += player.attack("Bullet")
+                    player.attack("Bullet")
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
                     player.go("stop up")
@@ -143,7 +139,7 @@ while True:
         knifeBaddiesHitblocks = pygame.sprite.groupcollide(knifeBaddies, blocks, False, False)
         gunBaddiesHitblocks = pygame.sprite.groupcollide(gunBaddies, blocks, False, False)
         playersHitblocks = pygame.sprite.groupcollide(players, blocks, False, False)
-        bulletsHitknifeBaddies = pygame.sprite.groupcollide(bullets, knifeBaddies, False, True)
+        bulletsHitknifeBaddies = pygame.sprite.groupcollide(bullets, knifeBaddies, True, True)
         bulletsHitgunBaddies = pygame.sprite.groupcollide(bullets, gunBaddies, True, False)
        
         for player in playersHitknifeBaddies:
@@ -181,6 +177,8 @@ while True:
         for bully in bulletsHitgunBaddies:
             for victem in bulletsHitgunBaddies[bully]:
                 bully.collideBall(victem)
+        
+            
         
         all.update(width, height)
         

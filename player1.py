@@ -23,6 +23,7 @@ class LenardLangly(KnifeBaddie):
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect(center = self.rect.center)
         self.maxSpeed = 5
+        self.attack
         self.bulletCoolDown = 0
         self.bulletCoolDownMax = 0
         self.bulletCoolDown = 0
@@ -113,5 +114,5 @@ class LenardLangly(KnifeBaddie):
         if atk == "Bullet" and self.bulletCoolDown == 0:
             self.shooting = True
             self.bulletCoolDown = self.bulletCoolDownMax
-            return [Bullet(self)]
+            return [Bullet(self.rect.center, self.facing)]
         return []
