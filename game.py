@@ -78,8 +78,6 @@ while True:
     
 
     player = LenardLangly([width/2, height/2])
-
-    player2 = LenardLangly([width/2, height/2])
     
     
     level = Level(size, 50)
@@ -182,8 +180,6 @@ while True:
         for bully in bulletsHitgunBaddies:
             for victem in bulletsHitgunBaddies[bully]:
                 bully.collideBall(victem)
-        for projectile in projectiles:
-            screen.blit(projectile.image, projectile.rect)
         
             
         

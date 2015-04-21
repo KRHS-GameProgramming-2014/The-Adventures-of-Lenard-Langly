@@ -6,30 +6,31 @@ class Bullet(pygame.sprite.Sprite):
         self.image = pygame.image.load("Recources/Projectiles/Bullet.png")
         self.rect = self.image.get_rect()
         self.living = True
-        self.speedx = 1
-        self.speedy = 1
-        self.didBounceX = False
-        self.didBounceY = False
         self.maxSpeed = 10
         if direction == "up":
             self.speed = [0, -self.maxSpeed] 
-       
+        elif direction == "down":
+            self.speed = [0, self.maxSpeed] 
+        elif direction == "right":
+            self.speed = [self.maxSpeed, 0] 
+        elif direction == "left":
+            self.speed = [-self.maxSpeed, 0] 
+        self.place(pos)
+        
         
     def move(self):
-        self.rect = self.rect.move(10, 10)
+        self.rect = self.rect.move(self.speed)
         
     def place(self, pt):
         self.rect.center = pt
      
     def collideBall(self, other):
         if self != other:
-            if (self.rect and other.rect) > self.distance(other.rect.center):
-                if not self.didBounceX:
-                    self.speedx = -self.speedx
-                    self.didBouncex = True
-                if not self.didBounceY:
-                    self.speedy = -self.speedy
-                    self.didBounceY = True
+            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+                    if (self.rect and other.rect) > self.distance(other.rect.center):
+                        self.living = False
+                        return True
         
     def update(*args):
         self = args[0]

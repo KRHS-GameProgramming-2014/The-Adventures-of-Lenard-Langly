@@ -26,7 +26,6 @@ class LenardLangly(KnifeBaddie):
         self.attack
         self.bulletCoolDown = 0
         self.bulletCoolDownMax = 0
-        self.bulletCoolDown = 0
             
     def update(*args):
         self = args[0]
