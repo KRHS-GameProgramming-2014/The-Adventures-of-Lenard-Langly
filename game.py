@@ -182,10 +182,10 @@ while True:
         for bully in bulletsHitgunBaddies:
             for victem in bulletsHitgunBaddies[bully]:
                 bully.collideBall(victem)
-        for projectile in projectiles:
-            screen.blit(projectile.image, projectile.rect)
         
             
+        if player.living != True == pygame.QUIT: sys.exit()
+        
         
         all.update(width, height)
         
