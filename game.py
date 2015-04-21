@@ -182,7 +182,7 @@ while True:
                 bully.collideBall(victem)
         
             
-        if player.living != True == pygame.QUIT: sys.exit()
+        if (player.living != True) == pygame.QUIT: sys.exit()
         
         
         all.update(width, height)
