@@ -14,6 +14,7 @@ class GunBaddie(pygame.sprite.Sprite):
         self.didBounceY = False
         self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
         self.living = True
+        self.attackRange = 100
         
     def place(self, pos):
         self.rect.center = pos
@@ -72,6 +73,15 @@ class GunBaddie(pygame.sprite.Sprite):
                     if (self.radius + other.radius) > self.distance(other.rect.center):
                         self.living = False
                         return True
+    
+    def attack(self, atk):
+        if atk == "Bullet" and self.bulletCoolDown == 0:
+            self.shooting = True
+            self.bulletCoolDown = self.bulletCoolDownMax
+            return [Bullet(self.rect.center, self.facing)]
+        return []
+    
+    
         return False
     
     def distance(self, pt):

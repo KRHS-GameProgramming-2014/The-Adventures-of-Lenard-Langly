@@ -32,6 +32,14 @@ class Bullet(pygame.sprite.Sprite):
                         self.living = False
                         return True
         
+    def collideBlock(self, other):
+        if self != other:
+            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+                    if (self.rect and other.rect) > self.distance(other.rect.center):
+                        self.living = False
+                        return True
+    
     def update(*args):
         self = args[0]
         width = args[1]
