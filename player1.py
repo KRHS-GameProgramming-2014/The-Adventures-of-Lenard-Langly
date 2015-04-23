@@ -104,6 +104,7 @@ class LenardLangly(KnifeBaddie):
         elif direction == "left":
             self.facing = "left"
             self.changed = True
+          
             self.speedx = -self.maxSpeed
         elif direction == "stop left":
             self.speedx = 0
