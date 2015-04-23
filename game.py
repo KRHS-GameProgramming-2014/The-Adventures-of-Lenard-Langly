@@ -42,10 +42,13 @@ BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Score.containers = (all, hudItems)
 
-spts = [(100,100),
+Knspts = [(100,100),
         (800,500),
         (72,505),
         (725,500)]
+
+Gnspts = [(400,400)]
+
 
 run = False
 
@@ -121,12 +124,12 @@ while True:
             if random.randint(0, 1*20) == 0:
                 KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
                           [random.randint(0,3), random.randint(0,3)],
-                          spts[random.randint(0,len(spts)-1)])
+                          Knspts[random.randint(0,len(Knspts)-1)])
         if len(gunBaddies) < 5:
             if random.randint(0, 1*20) == 0:
                 GunBaddie("Recources/Enemys/Gunman Baddie/Gunman Baddie 1.png",
                           [random.randint(0,3), random.randint(0,3)],
-                          spts[random.randint(0,len(spts)-1)])                  
+                          Gnspts[random.randint(0,len(Gnspts)-1)])                  
                           
        
         if timerWait < timerWaitMax:
