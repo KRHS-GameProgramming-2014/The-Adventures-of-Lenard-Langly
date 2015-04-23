@@ -47,7 +47,7 @@ Knspts = [(100,100),
         (72,505),
         (725,500)]
 
-Gnspts = [(400,400)]
+Gnspts = [(400,600)]
 
 
 run = False
@@ -145,7 +145,7 @@ while True:
         knifeBaddiesHitblocks = pygame.sprite.groupcollide(knifeBaddies, blocks, False, False)
         gunBaddiesHitblocks = pygame.sprite.groupcollide(gunBaddies, blocks, False, False)
         playersHitblocks = pygame.sprite.groupcollide(players, blocks, False, False)
-        bulletsHitknifeBaddies = pygame.sprite.groupcollide(bullets, knifeBaddies, False, True)
+        bulletsHitknifeBaddies = pygame.sprite.groupcollide(bullets, knifeBaddies, True, True)
         bulletsHitgunBaddies = pygame.sprite.groupcollide(bullets, gunBaddies, True, False)
        
         for player in playersHitknifeBaddies:
@@ -179,6 +179,7 @@ while True:
         for bully in bulletsHitknifeBaddies:
             for victem in bulletsHitknifeBaddies[bully]:
                 bully.collideBall(victem)
+                score.increaseScore(1)
                 
         for bully in bulletsHitgunBaddies:
             for victem in bulletsHitgunBaddies[bully]:
