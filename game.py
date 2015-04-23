@@ -76,8 +76,8 @@ while True:
         
     BackGround("Recources/Maps/Background V2.png")
     
-
     player = LenardLangly([width/2, height/2])
+
     
     
     level = Level(size, 50)
@@ -142,7 +142,7 @@ while True:
         knifeBaddiesHitblocks = pygame.sprite.groupcollide(knifeBaddies, blocks, False, False)
         gunBaddiesHitblocks = pygame.sprite.groupcollide(gunBaddies, blocks, False, False)
         playersHitblocks = pygame.sprite.groupcollide(players, blocks, False, False)
-        bulletsHitknifeBaddies = pygame.sprite.groupcollide(bullets, knifeBaddies, True, True)
+        bulletsHitknifeBaddies = pygame.sprite.groupcollide(bullets, knifeBaddies, False, True)
         bulletsHitgunBaddies = pygame.sprite.groupcollide(bullets, gunBaddies, True, False)
        
         for player in playersHitknifeBaddies:
