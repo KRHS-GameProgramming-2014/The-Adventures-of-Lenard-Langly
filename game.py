@@ -147,7 +147,7 @@ while True:
        
         for player in playersHitknifeBaddies:
             for knifeBaddie in playersHitknifeBaddies[player]:
-                score.increaseScore(1)
+                player.living = False
         
         for player in playersHitgunBaddies:
             for gunBaddie in playersHitgunBaddies[player]:
@@ -182,7 +182,6 @@ while True:
                 bully.collideBall(victem)
         
             
-        if (player.living != True) == pygame.QUIT: sys.exit()
         
         
         all.update(width, height)
