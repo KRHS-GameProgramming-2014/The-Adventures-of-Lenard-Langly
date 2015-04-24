@@ -2,6 +2,7 @@ import pygame, sys, random
 from KnifeBaddie import KnifeBaddie
 from GunBaddie import GunBaddie
 from player1 import LenardLangly
+from Player2 import JackSherman
 from HUD import Text
 from HUD import Score
 from Button import Button
@@ -38,6 +39,7 @@ GunBaddie.containers = (all, gunBaddies)
 Bullet.containers = (all, bullets)
 KnifeBaddie.containers = (all, knifeBaddies)
 LenardLangly.containers = (all, players)
+JackSherman.containers = (all, players)
 BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Score.containers = (all, hudItems)
@@ -80,8 +82,10 @@ while True:
     BackGround("Recources/Maps/Background V2.png")
     
     player = LenardLangly([width/2, height/2])
-
     
+    player2 = JackSherman([width/2, height/2])
+
+    projectiles = []
     
     level = Level(size, 50)
     level.loadLevel("1")
@@ -97,29 +101,53 @@ while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_w or event.key == pygame.K_UP:
+                if event.key == pygame.K_w:
                     player.go("up")
-                elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
+                elif event.key == pygame.K_d:
                     player.go("right")
-                elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_s:
                     player.go("down")
-                elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
+                elif event.key == pygame.K_a:
                     player.go("left")
                 if event.key == pygame.K_SPACE:
                     player.attack("Bullet")
+                elif event.key == pygame.K_UP:
+                    player2.go("up")
+                elif event.key == pygame.K_RIGHT:
+                    player2.go("right")
+                elif event.key == pygame.K_DOWN:
+                    player2.go("down")
+                elif event.key == pygame.K_LEFT:
+                    player2.go("left")
+                if event.key == pygame.K_KP0:
+                    player2.attack("Bullet")
+                   
 
                 elif event.key == pygame.K_SPACE:
                     projectiles += player.attack("Bullet")
 
             if event.type == pygame.KEYUP:
-                if event.key == pygame.K_w or event.key == pygame.K_UP:
+                if event.key == pygame.K_w:
                     player.go("stop up")
-                elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
+                elif event.key == pygame.K_d:
                     player.go("stop right")
-                elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_s:
                     player.go("stop down")
-                elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
-                    player.go("stop left")
+                elif event.key == pygame.K_a:
+                    player.go("stop left")   
+                elif event.key == pygame.K_UP:
+                    player2.go("stop up")
+                elif event.key == pygame.K_RIGHT:
+                    player2.go("stop right")
+                elif event.key == pygame.K_DOWN:
+                    player2.go("stop down")
+                elif event.key == pygame.K_LEFT:
+                    player2.go("stop left")
+        
+        
+        
+        
+        
         if len(knifeBaddies) < 5:
             if random.randint(0, 1*20) == 0:
                 KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
