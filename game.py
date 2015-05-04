@@ -79,7 +79,7 @@ while True:
         pygame.display.flip()
         clock.tick(60)
         
-    BackGround("Recources/Maps/Background V3.png")
+    BackGround("Recources/Maps/Map Limbo.png")
     
     player = LenardLangly([width/2, height/2])
     
@@ -176,7 +176,6 @@ while True:
         bulletsHitknifeBaddies = pygame.sprite.groupcollide(bullets, knifeBaddies, True, True)
         bulletsHitgunBaddies = pygame.sprite.groupcollide(bullets, gunBaddies, True, False)
         bulletsHitblocks = pygame.sprite.groupcollide(bullets, blocks, True, False)
-        bulletsHitplayers = pygame.sprite.groupcollide(bullets, players, True, True)
        
         for player in playersHitknifeBaddies:
             for knifeBaddie in playersHitknifeBaddies[player]:
