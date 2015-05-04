@@ -170,13 +170,13 @@ while True:
         playersHitgunBaddies = pygame.sprite.groupcollide(players, gunBaddies, False, True)
         knifeBaddiesHitknifeBaddies = pygame.sprite.groupcollide(knifeBaddies, knifeBaddies, False, False)
         gunBaddiesHitgunBaddies = pygame.sprite.groupcollide(gunBaddies, gunBaddies, False, False)
+        gunBaddiesHitplayers = pygame.sprite.groupcollide(gunBaddies, players, True, False)
         knifeBaddiesHitblocks = pygame.sprite.groupcollide(knifeBaddies, blocks, False, False)
         gunBaddiesHitblocks = pygame.sprite.groupcollide(gunBaddies, blocks, False, False)
         playersHitblocks = pygame.sprite.groupcollide(players, blocks, False, False)
         bulletsHitknifeBaddies = pygame.sprite.groupcollide(bullets, knifeBaddies, True, True)
         bulletsHitgunBaddies = pygame.sprite.groupcollide(bullets, gunBaddies, True, False)
         bulletsHitblocks = pygame.sprite.groupcollide(bullets, blocks, True, False)
-        bulletsHitplayers = pygame.sprite.groupcollide(bullets, players, True, True)
        
         for player in playersHitknifeBaddies:
             for knifeBaddie in playersHitknifeBaddies[player]:
