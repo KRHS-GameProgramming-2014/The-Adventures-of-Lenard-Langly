@@ -79,7 +79,7 @@ while True:
         pygame.display.flip()
         clock.tick(60)
         
-    BackGround("Recources/Maps/Background V2.png")
+    BackGround("Recources/Maps/Background V3.png")
     
     player = LenardLangly([width/2, height/2])
     

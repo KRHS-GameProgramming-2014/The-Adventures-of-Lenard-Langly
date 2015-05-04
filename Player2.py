@@ -5,13 +5,13 @@ from Bullet import Bullet
 class JackSherman(KnifeBaddie):
     def __init__(self, pos):
         KnifeBaddie.__init__(self, "Recources/player 1/LenardUP1.png", [0,0], pos)
-        self.upImages = [pygame.image.load("Recources/player 1/LenardUP1.png"),
-                         pygame.image.load("Recources/player 1/LenardUP2.png")]
-        self.downImages = [pygame.image.load("Recources/player 1/LenardDN1.png"),
+        self.upImages = [pygame.image.load("Recources/player 2/P2UP1.png"),
+                         pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
+        self.downImages = [pygame.image.load("Recources/player 2/P2DN1.png"),
                            pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
-        self.leftImages = [pygame.image.load("Recources/player 1/LenardLT1.png"),
+        self.leftImages = [pygame.image.load("Recources/player 2/P2LT1.png"),
                            pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
-        self.rightImages = [pygame.image.load("Recources/player 1/LenardRT1.png"),
+        self.rightImages = [pygame.image.load("Recources/player 2/P2RT1.png"),
                             pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
         self.facing = "up"
         self.changed = False
