@@ -6,13 +6,21 @@ class LenardLangly(KnifeBaddie):
     def __init__(self, pos):
         KnifeBaddie.__init__(self, "Recources/player 1/LenardUP1.png", [0,0], pos)
         self.upImages = [pygame.image.load("Recources/player 1/LenardUP1.png"),
-                         pygame.image.load("Recources/player 1/LenardUP2.png")]
+                         pygame.image.load("Recources/player 1/LenardUP3.png"),
+                         pygame.image.load("Recources/player 1/LenardUP2.png"),
+                         pygame.image.load("Recources/player 1/LenardUP3.png")]
         self.downImages = [pygame.image.load("Recources/player 1/LenardDN1.png"),
                            pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
         self.leftImages = [pygame.image.load("Recources/player 1/LenardLT1.png"),
-                           pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
+                            pygame.image.load("Recources/player 1/LenardLT2.png"),
+                            pygame.image.load("Recources/player 1/LenardLT3.png"),
+                            pygame.image.load("Recources/player 1/LenardLT2.png"),
+                            pygame.image.load("Recources/player 1/LenardLT3.png")]
         self.rightImages = [pygame.image.load("Recources/player 1/LenardRT1.png"),
-                            pygame.image.load("Recources/Enemys/Knife Baddie/paratrooper 1.png")]
+                            pygame.image.load("Recources/player 1/LenardRT2.png"),
+                            pygame.image.load("Recources/player 1/LenardRT3.png"),
+                            pygame.image.load("Recources/player 1/LenardRT2.png"),
+                            pygame.image.load("Recources/player 1/LenardRT3.png")]
         self.facing = "up"
         self.changed = False
         self.images = self.upImages
@@ -59,16 +67,6 @@ class LenardLangly(KnifeBaddie):
                 #print "hit xWall"
     
     def animate(self):
-        if self.waitCount < self.maxWait:
-            self.waitCount += 1
-        else:
-            self.waitCount = 0
-            self.changed = True
-            if self.frame < self.maxFrame:
-                self.frame += 1
-            else:
-                self.frame = 0
-        
         if self.changed:    
             if self.facing == "up":
                 self.images = self.upImages
@@ -78,6 +76,18 @@ class LenardLangly(KnifeBaddie):
                 self.images = self.rightImages
             elif self.facing == "left":
                 self.images = self.leftImages
+                
+        if self.waitCount < self.maxWait:
+            self.waitCount += 1
+        else:
+            self.waitCount = 0
+            self.maxFrame = len(self.images) - 1
+            if self.frame < self.maxFrame:
+                self.frame += 1
+            else:
+                self.frame = 0
+        
+        
             
             self.image = self.images[self.frame]
     
