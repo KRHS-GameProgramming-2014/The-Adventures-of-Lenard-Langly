@@ -1,5 +1,6 @@
 import pygame, math
 from Bullet import Bullet
+from player1 import LenardLangly
 
 class GunBaddie(pygame.sprite.Sprite):
     def __init__(self, image, speed = [0,0], pos = [0,0]):
