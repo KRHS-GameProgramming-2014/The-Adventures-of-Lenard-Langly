@@ -27,6 +27,7 @@ class KnifeBaddie(pygame.sprite.Sprite):
         self.speed = [self.speedx, self.speedy]
         self.move()
         self.collideWall(width, height)
+        self.image
         
     def move(self):
         self.rect = self.rect.move(self.speed)

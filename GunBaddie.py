@@ -66,6 +66,10 @@ class GunBaddie(pygame.sprite.Sprite):
                     self.speedy = -self.speedy
                     self.didBounceY = True
                             
+    def attackRange(self, other, attackRange):
+        if self != other:
+            if self.attackRange > other.rect and self.attackRange < other.rect:
+                self.attack = True
                             
     def collidePlayer(self, other):
         if self != other:
@@ -76,7 +80,7 @@ class GunBaddie(pygame.sprite.Sprite):
                         return True
     
     def attack(self, atk):
-        if atk == "Bullet" and self.bulletCoolDown == 0:
+        if attack == True:
             self.shooting = True
             self.bulletCoolDown = self.bulletCoolDownMax
             return [Bullet(self.rect.center, self.facing)]
@@ -84,6 +88,8 @@ class GunBaddie(pygame.sprite.Sprite):
     
     
         return False
+    
+    
     
     def distance(self, pt):
         x1 = self.rect.center[0]

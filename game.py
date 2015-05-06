@@ -166,7 +166,7 @@ while True:
            timerWait = 0
            timer.increaseScore(.1)
         
-        playersHitknifeBaddies = pygame.sprite.groupcollide(players, knifeBaddies, True, False)
+        playersHitknifeBaddies = pygame.sprite.groupcollide(players, knifeBaddies, True, True)
         playersHitgunBaddies = pygame.sprite.groupcollide(players, gunBaddies, False, True)
         knifeBaddiesHitknifeBaddies = pygame.sprite.groupcollide(knifeBaddies, knifeBaddies, False, False)
         gunBaddiesHitgunBaddies = pygame.sprite.groupcollide(gunBaddies, gunBaddies, False, False)
