@@ -92,10 +92,12 @@ class LenardLangly(KnifeBaddie):
             self.image = self.images[self.frame]
     
     def go(self, direction):
+        print direction
         if direction == "up":
             self.facing = "up"
             self.changed = True
             self.speedy = -self.maxSpeed
+            print self.speedy
         elif direction == "stop up":
             self.speedy = 0
         elif direction == "down":

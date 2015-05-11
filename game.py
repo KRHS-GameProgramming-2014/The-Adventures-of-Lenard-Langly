@@ -79,7 +79,7 @@ while True:
         pygame.display.flip()
         clock.tick(60)
         
-    BackGround("Recources/Maps/Map Limbo.png")
+    BackGround("Recources/Maps/Background V3.png")
     
     player = LenardLangly([width/2, height/2])
     
@@ -150,7 +150,7 @@ while True:
         
         if len(knifeBaddies) < 5:
             if random.randint(0, 1*20) == 0:
-                KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 2.png",
+                KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
                           [random.randint(0,3), random.randint(0,3)],
                           Knspts[random.randint(0,len(Knspts)-1)])
         if len(gunBaddies) < 5:
@@ -178,9 +178,11 @@ while True:
         bulletsHitgunBaddies = pygame.sprite.groupcollide(bullets, gunBaddies, True, False)
         bulletsHitblocks = pygame.sprite.groupcollide(bullets, blocks, True, False)
        
+        print players.sprites()
         for player in playersHitknifeBaddies:
             for knifeBaddie in playersHitknifeBaddies[player]:
                 player.living = False
+                print player
         
         for player in playersHitgunBaddies:
             for gunBaddie in playersHitgunBaddies[player]:
