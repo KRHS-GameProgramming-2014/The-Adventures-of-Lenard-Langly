@@ -33,13 +33,14 @@ players = pygame.sprite.Group()
 hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
+playerzs = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
 GunBaddie.containers = (all, gunBaddies)
 Bullet.containers = (all, bullets)
 KnifeBaddie.containers = (all, knifeBaddies)
 LenardLangly.containers = (all, players)
-JackSherman.containers = (all, players)
+JackSherman.containers = (all, playerzs)
 BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Score.containers = (all, hudItems)
@@ -79,7 +80,7 @@ while True:
         pygame.display.flip()
         clock.tick(60)
         
-    BackGround("Recources/Maps/Map Limbo.png")
+    BackGround("Recources/Maps/Matrixmap.png")
     
     player = LenardLangly([width/2, height/2])
     
@@ -167,13 +168,16 @@ while True:
            timer.increaseScore(.1)
         
         playersHitknifeBaddies = pygame.sprite.groupcollide(players, knifeBaddies, True, True)
+        playerzsHitknifeBaddies = pygame.sprite.groupcollide(playerzs, knifeBaddies, True, True)
         playersHitgunBaddies = pygame.sprite.groupcollide(players, gunBaddies, False, True)
+        playerzsHitgunBaddies = pygame.sprite.groupcollide(playerzs, gunBaddies, False, True)
         knifeBaddiesHitknifeBaddies = pygame.sprite.groupcollide(knifeBaddies, knifeBaddies, False, False)
         gunBaddiesHitgunBaddies = pygame.sprite.groupcollide(gunBaddies, gunBaddies, False, False)
         gunBaddiesHitplayers = pygame.sprite.groupcollide(gunBaddies, players, True, False)
         knifeBaddiesHitblocks = pygame.sprite.groupcollide(knifeBaddies, blocks, False, False)
         gunBaddiesHitblocks = pygame.sprite.groupcollide(gunBaddies, blocks, False, False)
         playersHitblocks = pygame.sprite.groupcollide(players, blocks, False, False)
+        playerzsHitblocks = pygame.sprite.groupcollide(playerzs, blocks, False, False)
         bulletsHitknifeBaddies = pygame.sprite.groupcollide(bullets, knifeBaddies, True, True)
         bulletsHitgunBaddies = pygame.sprite.groupcollide(bullets, gunBaddies, True, False)
         bulletsHitblocks = pygame.sprite.groupcollide(bullets, blocks, True, False)
@@ -185,6 +189,7 @@ while True:
         for player in playersHitgunBaddies:
             for gunBaddie in playersHitgunBaddies[player]:
                 score.increaseScore(1)
+                
                 
         for bully in knifeBaddiesHitknifeBaddies:
             for victem in knifeBaddiesHitknifeBaddies[bully]:
@@ -204,6 +209,10 @@ while True:
                 
         for bully in playersHitblocks:
             for victem in playersHitblocks[bully]:
+                bully.collideBlock(victem)
+                
+        for bully in playerzsHitblocks:
+            for victem in playerzsHitblocks[bully]:
                 bully.collideBlock(victem)
                 
         for bully in bulletsHitknifeBaddies:
