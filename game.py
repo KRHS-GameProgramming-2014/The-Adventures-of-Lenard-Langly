@@ -226,7 +226,7 @@ while True:
         for bully in bulletsHitblocks:
             for victem in bulletsHitblocks[bully]:
                 bully.collideBlock(victem)
-                score.increaseScore(10)
+                score.increaseScore(-1)
             
         
         
