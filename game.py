@@ -33,13 +33,14 @@ players = pygame.sprite.Group()
 hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
+playerzs = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
 GunBaddie.containers = (all, gunBaddies)
 Bullet.containers = (all, bullets)
 KnifeBaddie.containers = (all, knifeBaddies)
 LenardLangly.containers = (all, players)
-JackSherman.containers = (all, players)
+JackSherman.containers = (all, playerzs)
 BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Score.containers = (all, hudItems)
@@ -150,7 +151,7 @@ while True:
         
         if len(knifeBaddies) < 5:
             if random.randint(0, 1*20) == 0:
-                KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 2.png",
+                KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
                           [random.randint(0,3), random.randint(0,3)],
                           Knspts[random.randint(0,len(Knspts)-1)])
         if len(gunBaddies) < 5:
@@ -167,31 +168,36 @@ while True:
            timer.increaseScore(.1)
         
         playersHitknifeBaddies = pygame.sprite.groupcollide(players, knifeBaddies, True, True)
+        playerzsHitknifeBaddies = pygame.sprite.groupcollide(playerzs, knifeBaddies, True, True)
         playersHitgunBaddies = pygame.sprite.groupcollide(players, gunBaddies, False, True)
+        playerzsHitgunBaddies = pygame.sprite.groupcollide(playerzs, gunBaddies, False, True)
         knifeBaddiesHitknifeBaddies = pygame.sprite.groupcollide(knifeBaddies, knifeBaddies, False, False)
         gunBaddiesHitgunBaddies = pygame.sprite.groupcollide(gunBaddies, gunBaddies, False, False)
         gunBaddiesHitplayers = pygame.sprite.groupcollide(gunBaddies, players, True, False)
         knifeBaddiesHitblocks = pygame.sprite.groupcollide(knifeBaddies, blocks, False, False)
         gunBaddiesHitblocks = pygame.sprite.groupcollide(gunBaddies, blocks, False, False)
         playersHitblocks = pygame.sprite.groupcollide(players, blocks, False, False)
+        playerzsHitblocks = pygame.sprite.groupcollide(playerzs, blocks, False, False)
         bulletsHitknifeBaddies = pygame.sprite.groupcollide(bullets, knifeBaddies, True, True)
-        bulletsHitgunBaddies = pygame.sprite.groupcollide(bullets, gunBaddies, True, True)
+        bulletsHitgunBaddies = pygame.sprite.groupcollide(bullets, gunBaddies, True, False)
         bulletsHitblocks = pygame.sprite.groupcollide(bullets, blocks, True, False)
        
+        print players.sprites()
         for player in playersHitknifeBaddies:
             for knifeBaddie in playersHitknifeBaddies[player]:
                 player.living = False
+                print player
         
         for player in playersHitgunBaddies:
             for gunBaddie in playersHitgunBaddies[player]:
                 score.increaseScore(1)
                 
-        for player2 in playersHitknifeBaddies:
-            for knifeBaddie in playersHitknifeBaddies[player2]:
+        for player in playersHitknifeBaddies:
+            for knifeBaddie in playersHitknifeBaddies[player]:
                 player2.living = False
         
-        for player2 in playersHitgunBaddies:
-            for gunBaddie in playersHitgunBaddies[player2]:
+        for player in playersHitgunBaddies:
+            for gunBaddie in playersHitgunBaddies[player]:
                 score.increaseScore(1)
                 
         for bully in knifeBaddiesHitknifeBaddies:
@@ -214,6 +220,10 @@ while True:
             for victem in playersHitblocks[bully]:
                 bully.collideBlock(victem)
                 
+        for bully in playerzsHitblocks:
+            for victem in playerzsHitblocks[bully]:
+                bully.collideBlock(victem)
+                
         for bully in bulletsHitknifeBaddies:
             for victem in bulletsHitknifeBaddies[bully]:
                 bully.collideBall(victem)
@@ -226,7 +236,11 @@ while True:
         for bully in bulletsHitblocks:
             for victem in bulletsHitblocks[bully]:
                 bully.collideBlock(victem)
+<<<<<<< HEAD
                 score.increaseScore(-1)
+=======
+                score.increaseScore(0)
+>>>>>>> origin/master
             
         
         
