@@ -236,11 +236,8 @@ while True:
         for bully in bulletsHitblocks:
             for victem in bulletsHitblocks[bully]:
                 bully.collideBlock(victem)
-<<<<<<< HEAD
-                score.increaseScore(-1)
-=======
                 score.increaseScore(0)
->>>>>>> origin/master
+
             
         
         
