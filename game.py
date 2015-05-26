@@ -80,7 +80,7 @@ while True:
         pygame.display.flip()
         clock.tick(60)
         
-    BackGround("Recources/Maps/Matrixmap.png")
+    BackGround("Recources/Maps/Map Limbo.png")
     
     player = LenardLangly([width/2, height/2])
     
@@ -192,12 +192,12 @@ while True:
             for gunBaddie in playersHitgunBaddies[player]:
                 score.increaseScore(1)
                 
-        for player2 in playersHitknifeBaddies:
-            for knifeBaddie in playersHitknifeBaddies[player2]:
+        for player in playersHitknifeBaddies:
+            for knifeBaddie in playersHitknifeBaddies[player]:
                 player2.living = False
         
-        for player2 in playersHitgunBaddies:
-            for gunBaddie in playersHitgunBaddies[player2]:
+        for player in playersHitgunBaddies:
+            for gunBaddie in playersHitgunBaddies[player]:
                 score.increaseScore(1)
                 
         for bully in knifeBaddiesHitknifeBaddies:
@@ -237,6 +237,7 @@ while True:
             for victem in bulletsHitblocks[bully]:
                 bully.collideBlock(victem)
                 score.increaseScore(0)
+
             
         
         
