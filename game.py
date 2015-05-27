@@ -155,7 +155,7 @@ while True:
         
         if len(knifeBaddies) < 5:
             if random.randint(0, 1*20) == 0:
-                KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
+                KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper (1).png",
                           [random.randint(0,3), random.randint(0,3)],
                           Knspts[random.randint(0,len(Knspts)-1)])
         if len(gunBaddies) < 5:
@@ -263,6 +263,7 @@ while True:
             for victem in bulletsHitblocks[bully]:
                 bully.collideBlock(victem)
                 score.increaseScore(0)
+
             
         
         
