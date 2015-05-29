@@ -53,7 +53,7 @@ Knspts = [(100,100),
         (72,505),
         (725,500)]
 
-Gnspts = [(300,400)]
+Gnspts = [(400,5 x vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvbc,m `        1   aa00)]
 
 Kgspts = [(150,150)]
 
@@ -155,17 +155,17 @@ while True:
         
         if len(knifeBaddies) < 5:
             if random.randint(0, 1*20) == 0:
-                KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper (1).png",
+                KnifeBaddie("Recources/Enemys/Knife Baddie/paratrooper 1.png",
                           [random.randint(0,3), random.randint(0,3)],
                           Knspts[random.randint(0,len(Knspts)-1)])
         if len(gunBaddies) < 5:
             if random.randint(0, 1*20) == 0:
                 GunBaddie("Recources/Enemys/Gunman Baddie/Gunman Baddie 1.png",
-                          [random.randint(0,3), random.randint(0,3)],
+                          [random.randint(0,3), random.randint(0,3)], 
                           Gnspts[random.randint(0,len(Gnspts)-1)])                  
-        if len(knifeGods) < 5:
+        if len(knifeGods) < 1:
             if random.randint(0, 1*20) == 0:
-                KnifeGod("Recources/Enemys/Knife God/KnifeGod.png",
+                KnifeGod("Recources/Enemys/Knife God/KnifegodS.png",
                           [random.randint(0,3), random.randint(0,3)],
                           Kgspts[random.randint(0,len(Kgspts)-1)])                  
        
