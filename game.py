@@ -165,7 +165,7 @@ while True:
                           Gnspts[random.randint(0,len(Gnspts)-1)])                  
         if len(knifeGods) < 5:
             if random.randint(0, 1*20) == 0:
-                KnifeGod("Recources/Enemys/Knife God/KnifeGod.png",
+                KnifeGod("Recources/Enemys/Knife God/KnifegodS.png",
                           [random.randint(0,3), random.randint(0,3)],
                           Kgspts[random.randint(0,len(Kgspts)-1)])                  
        
@@ -215,7 +215,16 @@ while True:
                 player2.living = False
                 
         for player in playersHitknifeGods:
-            for knifeGod in playersHitknifeGods[player]:
+       
+       +-
+       
+       
+       
+       
+       
+       
+       ---------------+-+
+       ++ayersHitknifeGods[player]:
                 player2.living = False
         
         for player in playersHitgunBaddies:
