@@ -215,16 +215,7 @@ while True:
                 player2.living = False
                 
         for player in playersHitknifeGods:
-       
-       +-
-       
-       
-       
-       
-       
-       
-       ---------------+-+
-       ++ayersHitknifeGods[player]:
+            playersHitknifeGods[player]:
                 player2.living = False
         
         for player in playersHitgunBaddies:
