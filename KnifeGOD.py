@@ -15,6 +15,7 @@ class KnifeGod(pygame.sprite.Sprite):
         self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
         self.living = True
         
+        
     def place(self, pos):
         self.rect.center = pos
         
@@ -54,6 +55,9 @@ class KnifeGod(pygame.sprite.Sprite):
                 if not self.didBounceY:
                     self.speedy = -self.speedy
                     self.didBounceY = True
+    def living (self, health):
+        if self.health == 0:
+            self.living = False
         
     def collideBall(self, other):
         if self != other:
@@ -64,7 +68,7 @@ class KnifeGod(pygame.sprite.Sprite):
                 if not self.didBounceY:
                     self.speedy = -self.speedy
                     self.didBounceY = True
-                            
+                    self.health -= 1                            
                             
     def collidePlayer(self, other):
         if self != other:
