@@ -53,7 +53,7 @@ Knspts = [(100,100),
         (72,505),
         (725,500)]
 
-Gnspts = [(400,5 x vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvbc,m `        1   aa00)]
+Gnspts = [(400,500)]
 
 Kgspts = [(150,150)]
 

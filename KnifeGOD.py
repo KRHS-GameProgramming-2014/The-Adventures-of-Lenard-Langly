@@ -14,6 +14,7 @@ class KnifeGod(pygame.sprite.Sprite):
         self.didBounceY = False
         self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
         self.living = True
+        self.health = 20
         
         
     def place(self, pos):
