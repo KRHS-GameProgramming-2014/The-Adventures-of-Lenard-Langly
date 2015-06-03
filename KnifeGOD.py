@@ -90,8 +90,8 @@ class KnifeGod(pygame.sprite.Sprite):
         
         
     def Health (self):
-        self.Health = 20
+        self.Health == 20
         
-        if self.Health = 20:
+        if self.Health == 20:
             self.living = False
 

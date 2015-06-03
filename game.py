@@ -84,7 +84,7 @@ while True:
         pygame.display.flip()
         clock.tick(60)
         
-    BackGround("Recources/Maps/Map Limbo.png")
+    BackGround("Recources/Maps/Background V2.png")
     
     player = LenardLangly([width/2, height/2])
     
@@ -171,6 +171,9 @@ while True:
                           [random.randint(0,3), random.randint(0,3)],
                           Kgspts[random.randint(0,len(Kgspts)-1)])                  
        
+        if knifeGods.health <= 0:
+            kifeGods.living = False
+        
         if timerWait < timerWaitMax:
            timerWait += 1
         else:
