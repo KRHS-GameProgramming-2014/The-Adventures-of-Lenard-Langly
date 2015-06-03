@@ -92,12 +92,14 @@ while True:
 
     projectiles = []
     
+    KnifeGod.health = 20
+    
     level = Level(size, 50)
     level.loadLevel("1")
 
     timer = Score([80, height - 25], "Time: ", 36)
     timerWait = 0
-    timerWaitMax = 6
+    timerWaitMax = 1
 
 
 
@@ -177,8 +179,8 @@ while True:
         
         playersHitknifeBaddies = pygame.sprite.groupcollide(players, knifeBaddies, True, True)
         playerzsHitknifeBaddies = pygame.sprite.groupcollide(playerzs, knifeBaddies, True, True)
-        playersHitknifeGods = pygame.sprite.groupcollide(players, knifeGods, True, True)
-        playerzsHitknifeGods = pygame.sprite.groupcollide(playerzs, knifeGods, True, True)
+        playersHitknifeGods = pygame.sprite.groupcollide(players, knifeGods, True, False)
+        playerzsHitknifeGods = pygame.sprite.groupcollide(playerzs, knifeGods, True, False)
         playersHitgunBaddies = pygame.sprite.groupcollide(players, gunBaddies, False, True)
         playerzsHitgunBaddies = pygame.sprite.groupcollide(playerzs, gunBaddies, False, True)
         knifeBaddiesHitknifeBaddies = pygame.sprite.groupcollide(knifeBaddies, knifeBaddies, False, False)
@@ -190,7 +192,7 @@ while True:
         playersHitblocks = pygame.sprite.groupcollide(players, blocks, False, False)
         playerzsHitblocks = pygame.sprite.groupcollide(playerzs, blocks, False, False)
         bulletsHitknifeBaddies = pygame.sprite.groupcollide(bullets, knifeBaddies, True, True)
-        bulletsHitknifeGods = pygame.sprite.groupcollide(bullets, knifeGods, True, True)
+        bulletsHitknifeGods = pygame.sprite.groupcollide(bullets, knifeGods, True, False)
         bulletsHitgunBaddies = pygame.sprite.groupcollide(bullets, gunBaddies, True, False)
         bulletsHitblocks = pygame.sprite.groupcollide(bullets, blocks, True, False)
         
@@ -215,7 +217,11 @@ while True:
                 player2.living = False
                 
         for player in playersHitknifeGods:
+<<<<<<< HEAD
             playersHitknifeGods[player]:
+=======
+            for knifeGods in playersHitknifeGods[player]:
+>>>>>>> origin/master
                 player2.living = False
         
         for player in playersHitgunBaddies:
@@ -255,6 +261,11 @@ while True:
                 bully.collideBall(victem)
                 score.increaseScore(1)
                 
+        for bully in bulletsHitknifeGods:
+            for victem in bulletsHitknifeGods[bully]:
+                bully.collideBall(victem)
+                KnifeGod.health -= 1
+                
         for bully in bulletsHitgunBaddies:
             for victem in bulletsHitgunBaddies[bully]:
                 bully.collideBall(victem)
@@ -264,9 +275,9 @@ while True:
                 bully.collideBlock(victem)
                 score.increaseScore(0)
 
-            
+
         
-        
+        print KnifeGod.health
         all.update(width, height)
         
         dirty = all.draw(screen)
