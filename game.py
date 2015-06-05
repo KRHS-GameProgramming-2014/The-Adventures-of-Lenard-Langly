@@ -92,7 +92,7 @@ while True:
 
     projectiles = []
     
-    KnifeGod.health = 20
+    knifeGods.health = 20
     
     level = Level(size, 50)
     level.loadLevel("1")
@@ -171,8 +171,8 @@ while True:
                           [random.randint(0,3), random.randint(0,3)],
                           Kgspts[random.randint(0,len(Kgspts)-1)])                  
        
-        if knifeGods.health <= 0:
-            kifeGods.living = False
+        
+        
         
         if timerWait < timerWaitMax:
            timerWait += 1
@@ -220,11 +220,9 @@ while True:
                 player2.living = False
                 
         for player in playersHitknifeGods:
-<<<<<<< HEAD
-            playersHitknifeGods[player]:
-=======
+            playersHitknifeGods[player]
+
             for knifeGods in playersHitknifeGods[player]:
->>>>>>> origin/master
                 player2.living = False
         
         for player in playersHitgunBaddies:
@@ -267,7 +265,9 @@ while True:
         for bully in bulletsHitknifeGods:
             for victem in bulletsHitknifeGods[bully]:
                 bully.collideBall(victem)
-                KnifeGod.health -= 1
+                knifeGods.health -= 1
+            if knifeGods.health < 0:
+                knifeGods.living = False
                 
         for bully in bulletsHitgunBaddies:
             for victem in bulletsHitgunBaddies[bully]:
@@ -277,10 +277,11 @@ while True:
             for victem in bulletsHitblocks[bully]:
                 bully.collideBlock(victem)
                 score.increaseScore(0)
-
+        
+        
 
         
-        print KnifeGod.health
+        print knifeGods.health
         all.update(width, height)
         
         dirty = all.draw(screen)
