@@ -58,7 +58,7 @@ class KnifeGod(pygame.sprite.Sprite):
                     self.didBounceY = True
     
     def living (self, health):
-        if self.health <= 0:
+        if kXZZnifeGod.health <= 0:
             self.living = False
         
     def collideBall(self, other):
